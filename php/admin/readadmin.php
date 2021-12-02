@@ -19,7 +19,7 @@ $password = stripslashes($password);
 // подключаемся к базе
    $link = mysqli_connect("localhost", "root", "", "shpora"); 
  
-$result = mysqli_query($link,"SELECT * FROM log_pass_email WHERE login='$login'"); //извлекаем из базы все данные о пользователе с введенным логином
+$result = mysqli_query($link,"SELECT * FROM adminka WHERE login='$login'"); //извлекаем из базы все данные о пользователе с введенным логином
     $myrow = mysqli_fetch_array($result);
     if (empty($myrow['password']))
     {
@@ -32,8 +32,8 @@ $result = mysqli_query($link,"SELECT * FROM log_pass_email WHERE login='$login'"
     //если пароли совпадают, то запускаем пользователю сессию! Можете его поздравить, он вошел!
     $_SESSION['login']=$myrow['login']; 
     $_SESSION['id']=$myrow['id'];//эти данные очень часто используются, вот их и будет "носить с собой" вошедший пользователь
-	$_SESSION['login_admin_check']="ok";
-header("Location:../../index.php");
+	$_SESSION['adminka']="ok";
+header("Location:paneladmin.php");
     }
  else {
     //если пароли не сошлись

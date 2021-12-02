@@ -9,7 +9,6 @@ header ("Content-Type: text/html; charset=utf-8"); //кодировка.
 <html lang="rus">
 <head>
 <meta charset="utf=8"> <!--кодировка -->
-<link rel="STYLESHEET" href="css/format.css">
 <title>Титул</title> <!-- название страницы-->
 <link rel="icon" type="img/" href="icon.ico"> <!--Иконка страницы, размер: 16х16, 32х32 и 48х48 -->
 <link rel="STYLESHEET" href="css/format.css"> <!--Подключениее файла css -->
@@ -50,15 +49,8 @@ PRIMARY KEY (`id`)
 )";
 mysqli_query($link,$sql);
 
-  $news = file_get_contents("news.txt");
-  $news = explode("\n", $news);
-  for ($i = 0; $i < count($news); $i++) {
-    $new = explode(";", $news[$i]);
     ?>
-    <h1><?=$new[0]?></h1>
-    <p><?=$new[1]?></p>
-    <p><?=$new[2]?></p>
-  <?php } ?>
+
   <?php
   if($_SESSION['login_admin_check']=="ok"){
   $sql="INSERT INTO news (title,text) VALUES ('1 новость','1 новость')";
