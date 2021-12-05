@@ -10,14 +10,16 @@ header ("Content-Type: text/html; charset=utf-8"); //кодировка.
 <head>
 <meta charset="utf=8"> <!--кодировка -->
 <title>Титул</title> <!-- название страницы-->
-<link rel="icon" type="img/" href="icon.ico"> <!--Иконка страницы, размер: 16х16, 32х32 и 48х48 -->
-<link rel="STYLESHEET" href="css/format.css"> <!--Подключениее файла css -->
-<link rel="STYLESHEET" href="css/reset.css"> <!-- rese.css (сброс стандартных настроек браузера) -->
+<link rel="icon"  href="image/iconka.ico"> <!--Иконка страницы, размер: 16х16, 32х32 и 48х48 -->
+<link rel='stylesheet' href='css/forma.css'/>
 </head>
 <body><!--кодировка -->
+<?php
+echo date('l jS \of F Y h:i:s A');
+?>
 <div class="idRamka">
 
-<h1>Сайт понятно с чем!</h1>
+<h1>Сайт не понятно с чем!</h1>
 
 
 <h2>ВХОД/ВЫХОД</h2>
@@ -38,34 +40,23 @@ if($_SESSION['login_admin_check']!="ok"){
 
 }
 ?>
-
+</div class="idRamka">
 <div id="news">
+
 <?php
-$sql = "CREATE TABLE IF NOT EXISTS `news` (
-`id` INT(10) NOT NULL AUTO_INCREMENT,
-`title` VARCHAR(255) NOT NULL,
-`text` TEXT NOT NULL,
-PRIMARY KEY (`id`)
-)";
-mysqli_query($link,$sql);
-
-    ?>
-
-  <?php
-  if($_SESSION['login_admin_check']=="ok"){
-  $sql="INSERT INTO news (title,text) VALUES ('1 новость','1 новость')";
-$result=mysqli_query($link,$sql);
-  $sql = mysqli_query($link, 'SELECT `id`, `title`, `text` FROM `news`');
+  $sql = mysqli_query($link, 'SELECT `id`, `title`, `avtor`, `infa` FROM `news`');
   while ($result = mysqli_fetch_array($sql)) {
-    echo "<h1>{$result['title']}: {$result['text']} рублей</h1>";
-  }}
+  echo "<h1>{$result['title']} </h1>";
+  echo "<p> {$result['infa']} </p>";
+  echo "<p> {$result['avtor']} </p>";
+  
+}
 ?>
 </div>
 
 
 
 
-</div id="idRamka">
 </body>
 
 </html>

@@ -15,5 +15,6 @@ echo("<h2><a href='../exit.php'>ВЫХОД</a></h2>");
 	}
 	else
 		header("Location:adminka.php");
+echo("<h2><a href='../news/news.php'>ДОБАВИТЬ НОВОСТЬ</a></h2>");
 
 ?>
